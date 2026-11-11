@@ -1,0 +1,16 @@
+﻿name: 'africa_dev_pipeline'
+version: '1.0.0'
+config-version: 2
+
+profile: 'africa_dev_pipeline'
+
+model-paths: ['models']
+test-paths: ['tests']
+clean-targets: ['target', 'dbt_packages']
+
+models:
+  africa_dev_pipeline:
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table

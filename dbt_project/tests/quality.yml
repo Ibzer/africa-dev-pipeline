@@ -1,0 +1,42 @@
+﻿version: 2
+
+models:
+  - name: stg_indicators
+    columns:
+      - name: id
+        tests:
+          - unique
+          - not_null
+      - name: pays
+        tests:
+          - not_null
+      - name: annee
+        tests:
+          - not_null
+
+  - name: fact_indicators
+    columns:
+      - name: id
+        tests:
+          - unique
+          - not_null
+      - name: pays
+        tests:
+          - not_null
+      - name: annee
+        tests:
+          - not_null
+
+  - name: dim_pays
+    columns:
+      - name: pays_code
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_annee
+    columns:
+      - name: annee
+        tests:
+          - unique
+          - not_null
