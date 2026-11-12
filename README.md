@@ -1,6 +1,6 @@
 # Africa Dev Pipeline
 
-Pipeline de donnees sur les indicateurs de developpement humain en Afrique de l Ouest (Guinee, Senegal, Cote d Ivoire, Mali) entre 2000 et 2023.
+Pipeline de donnees sur les indicateurs de developpement humain en Afrique de l Ouest (Guinee, Senegal, Cote d Ivoire, Mali) entre 2000 et 2023. Visualisation via Metabase.
 
 Source des donnees : API Banque mondiale (wbdata)
 
@@ -16,6 +16,7 @@ Source des donnees : API Banque mondiale (wbdata)
 - Python 3.11
 - PostgreSQL 15
 - dbt-core + dbt-postgres (modele en etoile + tests qualite)
+- Metabase (visualisation)
 - Docker + Docker Compose
 - wbdata (API Banque mondiale)
 
@@ -26,6 +27,8 @@ API Banque mondiale -> fetch_indicators.py -> PostgreSQL (indicators_raw)
                                          dbt stg_indicators (vue)
                                                       |
                       dim_pays + dim_annee + fact_indicators (modele en etoile)
+                                                      |
+                                           Metabase (dashboard)
 
 ## Modele en etoile
 
@@ -41,10 +44,12 @@ API Banque mondiale -> fetch_indicators.py -> PostgreSQL (indicators_raw)
 4. Lancer les conteneurs : docker compose up -d
 5. Ingerer les donnees : python ingestion\fetch_indicators.py
 6. Lancer dbt : cd dbt_project && dbt run && dbt test
+7. Ouvrir Metabase sur localhost:3001 et connecter la base africa (host.docker.internal:5434)
 
 ## Acces
 
 - PostgreSQL : localhost:5434 (africa / africa)
+- Metabase : localhost:3001
 
 ## Choix techniques
 
